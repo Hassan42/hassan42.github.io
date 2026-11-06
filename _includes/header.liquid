@@ -1,0 +1,160 @@
+{% comment %}
+  Overrides the al_folio_core navbar: the site is one scrolling page, so "about" and "my work"
+  jump to sections on the home page and "CV" opens the CV page.
+{% endcomment %}
+<style>
+  @media (min-width: 576px) {
+    .post .profile {
+      width: 38%;
+    }
+  }
+  .section-separator {
+    clear: both;
+    margin: 2.5rem 0 1.5rem;
+    border: 0;
+    border-top: 1px solid var(--global-divider-color);
+  }
+  .cv-actions {
+    float: right;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+  .cv-download {
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--global-theme-color);
+    border-radius: 4px;
+    color: var(--global-theme-color);
+    font-size: 0.9rem;
+  }
+  .cv-download:hover {
+    background: var(--global-theme-color);
+    color: var(--global-hover-text-color);
+    text-decoration: none;
+  }
+  /* The separator above the heading is enough: drop the theme's line above the first year. */
+  .post .publications {
+    margin-top: 0;
+  }
+  .post .publications h2.bibliography:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+</style>
+<header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
+    <div class="container">
+      {% if page.permalink != '/' %}
+        <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
+          <span class="font-weight-bold">{{- site.first_name -}}</span>
+          {{ site.last_name -}}
+        </a>
+      {% endif %}
+      <!-- Navbar Toggle -->
+      <button
+        class="navbar-toggler collapsed navbar-toggler-main"
+        type="button"
+        data-nav-toggle="navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav">
+        <ul class="navbar-nav navbar-menu-list flex-nowrap">
+          <li class="nav-item" data-section="top">
+            <a class="nav-link" href="{{ '/#top' | relative_url }}">about</a>
+          </li>
+          <li class="nav-item" data-section="projects">
+            <a class="nav-link" href="{{ '/#projects' | relative_url }}">my work</a>
+          </li>
+          <li class="nav-item {% if page.permalink == '/cv/' %}active{% endif %}">
+            <a class="nav-link" href="{{ '/cv/' | relative_url }}">CV</a>
+          </li>
+          {% if site.enable_darkmode %}
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme">
+                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              </button>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% if site.enable_progressbar %}
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  {% endif %}
+</header>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Home page only: the CV page has its own "projects" section heading.
+    var projects = {% if page.permalink == '/' %}document.getElementById("projects"){% else %}null{% endif %};
+    var aboutItem = document.querySelector('[data-section="top"]');
+    var projectsItem = document.querySelector('[data-section="projects"]');
+    var panel = document.getElementById("navbarNav");
+    var toggle = document.querySelector("[data-nav-toggle]");
+
+    // Highlight the section being read.
+    function update() {
+      if (!projects) return;
+      var inProjects = projects.getBoundingClientRect().top <= window.innerHeight * 0.4;
+      aboutItem.classList.toggle("active", !inProjects);
+      projectsItem.classList.toggle("active", inProjects);
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+
+    // Arriving from the CV page with #projects: scroll there once the photo has set the layout.
+    if (projects && location.hash === "#projects") {
+      var scrollToProjects = function () {
+        // Instant: a smooth scroll started during page load gets cancelled.
+        setTimeout(function () {
+          projects.scrollIntoView({ behavior: "instant" });
+        }, 0);
+      };
+      if (document.readyState === "complete") scrollToProjects();
+      else window.addEventListener("load", scrollToProjects);
+    }
+
+    // Jump to the section without leaving the page, and close the phone menu first.
+    panel.querySelectorAll("a.nav-link").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        if (panel.classList.contains("show")) toggle.click();
+        var hash = link.hash.slice(1);
+        var target = hash === "top" ? document.documentElement : document.getElementById(hash);
+        if (!target || !projects) return;
+        event.preventDefault();
+        history.pushState(null, "", "#" + hash);
+        requestAnimationFrame(function () {
+          if (hash === "top") window.scrollTo(0, 0);
+          else target.scrollIntoView();
+        });
+      });
+    });
+  });
+</script>

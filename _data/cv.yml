@@ -1,0 +1,155 @@
+# Source for the /cv/ page, transcribed from main.pdf.
+# Phone number, date of birth, nationality and permit status are left out on purpose: this page is public.
+cv:
+  name: Hassan Atwi
+  label: PhD student in Informatics and software engineer
+  email: atwihassan4@gmail.com
+  location: Lugano, CH
+  summary: PhD student in Informatics and software engineer specialising in blockchain-based business process automation, from model-driven tooling to smart-contract deployment. Developed smart contract engineering methods for business processes and message ordering mechanisms for distributed systems, with results in eight peer-reviewed publications. Experienced in turning research ideas into working software and in guiding students through full-stack web projects.
+
+  social_networks:
+    - network: GitHub
+      username: Hassan42
+
+  sections:
+    Education:
+      - institution: USI Università della Svizzera italiana
+        location: Lugano, CH
+        area: Informatics
+        studyType: PhD
+        start_date: 2022-09
+        end_date: 2027-02
+        highlights:
+          - Expected completion February 2027.
+          - Research on blockchain-enabled business process management, supervised by Prof. Cesare Pautasso.
+
+      - institution: USI Università della Svizzera italiana
+        location: Lugano, CH
+        area: Software & Data Engineering
+        studyType: Master of Science
+        start_date: 2019-09
+        end_date: 2022-08
+
+      - institution: American University of Culture & Education
+        location: LB
+        area: Computer Science
+        studyType: Bachelor of Science
+        start_date: 2016-08
+        end_date: 2019-06
+
+    Positions:
+      - company: DESIGN Research Group, Software Institute, USI
+        position: Doctoral Researcher
+        location: Lugano, CH
+        start_date: 2021-09
+        end_date: present
+        highlights:
+          - Designed BPMN4BC, a model-driven extension of the BPMN standard for blockchain-aware process modelling, and built a compiler that turns BPMN XML into deployable Solidity smart contracts.
+          - Researched and implemented a transparent transaction-ordering mechanism resistant to maximal extractable value attacks for multi-party blockchain workflows, validated on an Ethereum Virtual Machine test network.
+          - Configured a Hyperledger Fabric network with certificate authorities, peer nodes and organisational membership services, and implemented chaincode to execute a business process.
+          - Validated tools empirically through a usability study with 50+ participants and a ground-truth oracle mined from open-source repositories.
+          - Published eight peer-reviewed papers and presented at international venues including BPM, ICSOC and EuroPLoP.
+
+      - company: Faculty of Informatics, USI Università della Svizzera italiana
+        position: Teaching Assistant
+        location: Lugano, CH
+        start_date: 2022-09
+        end_date: present
+        highlights:
+          - Coached second-year Bachelor students in Web Atelier to build full-stack client-server applications with Node.js, Express, MongoDB, JavaScript, HTML5 and CSS3 following the MVC pattern.
+          - Reviewed code and graded semester-long web development projects.
+          - Supported Business Process Management, Modelling and Mining, covering process automation, mining and deployment of organisational workflows.
+
+      - company: Master of Science in Software & Data Engineering, USI
+        position: Academic Projects
+        location: Lugano, CH
+        start_date: 2019-09
+        end_date: 2022-08
+        highlights:
+          - Developed a data visualisation web application with a React front end and a Django back end.
+          - Built a bug detection tool with Spring Boot as backend technology.
+          - Analysed large datasets with pandas data frame and PySpark.
+          - Analysed source code with scikit-learn, text mining and ontology-based modelling in Protégé.
+
+    Projects:
+      - name: Map Monitor
+        url: https://github.com/Hassan42/map-monitor
+        summary: Built and deployed a full-stack web platform for mapping conflict events and territories on an interactive timeline, with versioned drafts and publishing, and shareable public maps.
+        highlights:
+          - TypeScript, React, MapLibre, Java, Spring Boot, PostgreSQL, Firebase
+        date: 2026
+
+      - name: BPMN4BC
+        url: https://github.com/Hassan42/BPMN-4-BC
+        summary: Developed a compiler service that parses BPMN4BC diagrams and automatically generates, compiles and deploys the matching Solidity smart contracts.
+        highlights:
+          - JavaScript, Solidity, Hardhat, bpmn.io, Node.js, Express.js
+        date: 2025
+
+      - name: Process-Aware Consensus
+        url: https://github.com/Hassan42/transparent-ordering
+        summary: Automated a distributed multi-node test environment to benchmark transaction-ordering strategies for latency, cost and censorship resistance.
+        highlights:
+          - JavaScript, Solidity, Hardhat, Docker, Bash
+        date: 2024
+
+      - name: PyRef
+        url: https://github.com/PyRef/PyRef
+        summary: Built a static analysis tool that detects 11 types of code refactoring from the Git history of Python projects.
+        highlights:
+          - Python, pandas
+        date: 2021
+
+    Publications:
+      - title: Fine-Grained Control of Blockchain-Based Business Process Instance Deployment
+        authors: [H. Atwi, C. Pautasso]
+        publisher: 24th International Conference on Business Process Management, BPM 2026, Toronto CA
+        releaseDate: 2026
+      - title: DAO Proposal Patterns with Blockchain-Based Processes
+        authors: [H. Atwi, C. Pautasso]
+        publisher: European Conference on Pattern Languages of Programs, EuroPLoP 2026, Irsee DE
+        releaseDate: 2026
+      - title: "BPMN4BC: A Simple BPMN Extension for Blockchain-Enabled Business Process Modeling"
+        authors: [H. Atwi, C. Pautasso]
+        publisher: 23rd International Conference on Service-Oriented Computing, ICSOC 2025, Shenzhen CN
+        releaseDate: 2025
+      - title: "Enhancing transparency in transaction ordering: Dynamic orderer selection in blockchain-driven collaborative processes"
+        authors: [H. Atwi, T. Lichtenstein, C. Pautasso, M. Weske]
+        publisher: "Blockchain: Research and Applications, journal article"
+        releaseDate: 2025
+      - title: Gas Management Patterns in Blockchain-enabled Process Execution
+        authors: [H. Atwi, C. Pautasso]
+        publisher: 1st Workshop on Distributed Ledger Technologies in Business Process Management, DLT4BPM 2025, Seville ES
+        releaseDate: 2025
+      - title: Transparent Transaction Ordering in Blockchain-based Collaborative Processes
+        authors: [H. Atwi, T. Lichtenstein, C. Pautasso, M. Weske]
+        publisher: 22nd International Conference on Business Process Management, BPM 2024, Krakow PL
+        releaseDate: 2024
+      - title: "Loose Collaborations on the Blockchain: Survey and Challenges"
+        authors: [T. Lichtenstein, H. Atwi, M. Weske, C. Pautasso]
+        publisher: 21st International Conference on Business Process Management, BPM 2023, Utrecht NL
+        releaseDate: 2023
+      - title: "PyRef: Refactoring Detection in Python Projects"
+        authors: [H. Atwi, B. Lin, N. Tsantalis, Y. Kashiwa, Y. Kamei, N. Ubayashi, G. Bavota, M. Lanza]
+        publisher: IEEE 21st International Working Conference on Source Code Analysis and Manipulation, SCAM 2021, virtual
+        releaseDate: 2021
+
+    Skills:
+      - name: Blockchain
+        keywords: Solidity, Ethereum, Hardhat, Hyperledger Fabric
+      - name: Languages
+        keywords: Python, JavaScript, TypeScript, Java, SQL
+      - name: Frameworks & Tools
+        keywords: Spring Boot, PostgreSQL, Node.js, Express.js, Docker, Git, Bash, pandas, React, Django
+      - name: Process Modelling
+        keywords: BPMN, bpmn.io, Camunda
+      - name: Used in Coursework
+        keywords: PySpark, JUnit, MongoDB, scikit-learn, PyTorch, Unity, C/C++
+
+    Languages:
+      - name: Arabic
+        summary: Native
+      - name: English
+        summary: Fluent, working language of Master's and PhD studies
+      - name: French
+        summary: A2, with B1 reading and listening

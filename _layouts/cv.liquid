@@ -1,0 +1,21 @@
+---
+layout: default
+---
+{% comment %}
+  Overrides the al_folio_core CV layout to add a download button and Google Scholar and LinkedIn links. The theme's
+  own cv_pdf option only shows an icon that opens the PDF in a new tab, and it doesn't show social links here.
+{% endcomment %}
+<div class="cv-actions">
+  <a class="cv-download" href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}" target="_blank" rel="noopener noreferrer">
+    <i class="ai ai-google-scholar"></i> Google Scholar
+  </a>
+  <a class="cv-download" href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}/" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-linkedin"></i> LinkedIn
+  </a>
+  {% comment %}
+  <a class="cv-download" href="{{ '/assets/pdf/Hassan_Atwi_CV.pdf' | relative_url }}" download="Hassan_Atwi_CV.pdf">
+    <i class="fa-solid fa-download"></i> Download PDF
+  </a>
+  {% endcomment %}
+</div>
+{% al_folio_cv_render %}
