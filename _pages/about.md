@@ -29,7 +29,7 @@ I also enjoy turning research ideas into working software and, as a teaching ass
 
 ## Projects {#projects}
 
-**[Map Monitor](https://github.com/Hassan42/map-monitor)** (2026)<br>
+**[Map Monitor](https://github.com/Hassan42/map-monitor)** (2026) · [Demo](https://map-monitor.up.railway.app/)<br>
 _TypeScript, React, MapLibre, Java, Spring Boot, PostgreSQL, Firebase_<br>
 Built and deployed a full-stack web platform for mapping conflict events and territories on an interactive timeline, with versioned drafts and publishing, and shareable public maps.
 
